@@ -34,5 +34,7 @@ const getResult = (user, pc) => {
     'Papel'     : () => result = pc === 'Piedra',
     'Tijera'    : () => result = pc === 'Papel'
   }
-  return user === pc ? 'draw' : options[user]() ? 'win' : 'lose';
+  return user !== pc
+    ? options[user]() ? 'win' : 'lose'
+    : 'draw';
 }
