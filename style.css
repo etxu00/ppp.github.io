@@ -1,0 +1,91 @@
+:root {
+  --victory: mediumseagreen;
+  --lose: tomato;
+  --draw: royalblue;
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+body[class]:after {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  animation: result 0.25s ease-in-out 2.25s;
+}
+
+/*Selextor de tributo que empieze con  ___ a body*/
+body[class*="___"] {
+  transition: background-color 0.25s ease-in-out 2s;
+  background-position: center calc(50vh - 5rem);
+  background-repeat: no-repeat;
+  animation: figth 1s ease-in-out;
+}
+
+button {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.win {
+  background-color: var(--victory);
+  &:after {
+    content: "Ganaste";
+  }
+}
+
+.lose {
+  background-color: var(--lose);
+  &:after {
+    content: "Perdiste";
+  }
+}
+
+.draw {
+  background-color: var(--draw);
+  &:after {
+    content: "Empate";
+  }
+}
+
+.___Piedra {
+  background-image: url(https://img.icons8.com/color/48/rock.png);
+}
+
+.___Papel {
+  background-image: url(https://img.icons8.com/color/48/paper.png);
+}
+
+.___Tijera {
+  background-image: url(https://img.icons8.com/color/48/scissors.png);
+}
+
+@keyframes figth {
+  from {
+    background-position: center 0;
+  }
+  to {
+    background-position: center calc(50vh - 5rem);
+  }
+}
+
+@keyframes result {
+  from {
+    opacity: 0;
+    transform: scale(3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
