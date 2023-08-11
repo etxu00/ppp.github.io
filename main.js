@@ -26,7 +26,6 @@ const play = optionUser => {
     optionComputer    = options[Math.floor(Math.random() * 3)],
     result            = getResult(optionUser, optionComputer);
   $body.classList.add(result, `___${optionComputer}`);
-  //atributo role para main con el valor de optionUser
   $main.classList.add(`___${optionUser}`);
 }
 const getResult = (user, pc) => {

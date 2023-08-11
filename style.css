@@ -20,19 +20,19 @@ body[class]:after {
   color: white;
   text-transform: uppercase;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   animation: result 0.25s ease-in-out .5s;
+  font-size: 1rem;
 }
 
 /*Selextor de tributo que empieze con  ___ a body*/
 body[class*="___"] {
-  background-position: center calc(50vh - 4rem);
+  background-position: calc(50vw + .5rem) calc(50vh - 4rem);
   transition: background-color 0.25s ease-in-out .5s;
   animation: figth 1s ease-in-out;
 }
 
 [class*="___"] {
-  background-position: center top;
+  background-position: calc(50% - 2rem) top;
   background-repeat: no-repeat;
 }
 
@@ -46,6 +46,18 @@ button {
 
 main {
   padding: 3rem 0 0 0;
+  position: relative;
+  &[class*="___"]:before {
+    content: 'vs';
+    position: absolute;
+    top: 15px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    animation: fireTextShadow 1s ease-in-out infinite alternate;
+    font-size: 1.25rem;
+  }
 }
 
 .win {
@@ -83,10 +95,10 @@ main {
 
 @keyframes figth {
   from {
-    background-position: center 0;
+    background-position: calc(50vw + .5rem) 0;
   }
   to {
-    background-position: center calc(50vh - 5rem);
+    background-position: calc(50vw + .5rem) calc(50vh - 5rem);
   }
 }
 
@@ -98,5 +110,24 @@ main {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes win {
+  from {
+    filter: opacity(1);
+  }
+  to {
+    filter: opacity(0.5);
+  }
+}
+
+@keyframes fireTextShadow {
+  0% {
+      text-shadow: 0 0 2px red;
+  }
+
+  100% {
+    text-shadow: 0 0 5px blue;
   }
 }
