@@ -2,8 +2,9 @@
 // Elementos del DOM
 const
   $buttons = document.querySelectorAll('button'),
-  $body   = document.querySelector('body'),
+  $body   = document.querySelector('body');
   $main   = document.querySelector('main');
+
 
 // Asignación de eventos
 $buttons.forEach(($button) => {
@@ -12,19 +13,20 @@ $buttons.forEach(($button) => {
 
 // Funciones
 const letsGo = event => {
+  $body.classList.remove('win', 'lose', 'draw', '___Piedra', '___Papel', '___Tijera');
+  $main.classList.remove('___Piedra', '___Papel', '___Tijera');
   $buttons.forEach($button => $button.disabled = true);
   const optionUser = event.target.textContent;
   play(optionUser);
+  setTimeout(() => $buttons.forEach($button => $button.disabled = false), 1000);
 }
 const play = optionUser => {
-  resetLayout();
   const
     options           = ['Piedra', 'Papel', 'Tijera'],
     optionComputer    = options[Math.floor(Math.random() * 3)],
     result            = getResult(optionUser, optionComputer);
   $body.classList.add(result, `___${optionComputer}`);
   $main.classList.add(`___${optionUser}`);
-  setTimeout(() => $buttons.forEach($button => $button.disabled = false), 1000);
 }
 const getResult = (user, pc) => {
   const options = {
@@ -33,8 +35,4 @@ const getResult = (user, pc) => {
     'Tijera'    : () => result = pc === 'Papel' ? 'win' : 'lose'
   }
   return user === pc ? 'draw' : options[user]();
-}
-const resetLayout = () => {
-  $body.classList.remove('win', 'lose', 'draw', '___Piedra', '___Papel', '___Tijera');
-  $main.classList.remove('___Piedra', '___Papel', '___Tijera');
 }
