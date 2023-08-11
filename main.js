@@ -30,9 +30,9 @@ const play = optionUser => {
 }
 const getResult = (user, pc) => {
   const options = {
-    'Piedra'    : () => result = pc === 'Tijera',
-    'Papel'     : () => result = pc === 'Piedra',
-    'Tijera'    : () => result = pc === 'Papel'
+    'Piedra'    : () => pc === 'Tijera',
+    'Papel'     : () => pc === 'Piedra',
+    'Tijera'    : () => pc === 'Papel'
   }
   return user !== pc
     ? options[user]() ? 'win' : 'lose'
