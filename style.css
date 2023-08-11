@@ -21,20 +21,31 @@ body[class]:after {
   text-transform: uppercase;
   font-weight: bold;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  animation: result 0.25s ease-in-out 2.25s;
+  animation: result 0.25s ease-in-out .5s;
 }
 
 /*Selextor de tributo que empieze con  ___ a body*/
 body[class*="___"] {
-  transition: background-color 0.25s ease-in-out 2s;
-  background-position: center calc(50vh - 5rem);
-  background-repeat: no-repeat;
+  background-position: center calc(50vh - 4rem);
+  transition: background-color 0.25s ease-in-out .5s;
   animation: figth 1s ease-in-out;
+}
+
+[class*="___"] {
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 button {
   margin: 1rem;
   padding: 0.5rem 1rem;
+  &[disabled] {
+    opacity: 0;
+  }
+}
+
+main {
+  padding: 3rem 0 0 0;
 }
 
 .win {
