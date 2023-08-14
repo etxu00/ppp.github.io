@@ -24,26 +24,28 @@ $buttons.forEach($button => $button.addEventListener('click', event => letsGo(ev
  * @see letsGo
  * @see getResult
  */
-const letsGo = event => {
+async function letsGo(event) {
   const optionUser = event.target.textContent;
-  resetLayout();
-  disabledButtons();
-  play(optionUser);
-  enabledButtons();
+  await resetLayout();
+  await disabledButtons();
+  await play(optionUser);
+  await enabledButtons();
 }
 /**
  * Evita las pulsoaciones compulsivas de los usuarios y mejora la visualización de la selección
  * de la computadora
  * @returns {Promise}
  */
-const disabledButtons = async () => $buttons.forEach($button => $button.disabled = true);
+function disabledButtons() {
+  $buttons.forEach($button => $button.disabled = true);
+}
 /**
  * Habilita los botones para que el usuario pueda jugar de nuevo
  * @returns {Promise}
  * @description
  * Espera 1 segundo para habilitar los botones, para persmitir que se ejecute la animación
  */
-const enabledButtons = () => {
+function enabledButtons() {
   setTimeout(() => $buttons.forEach($button => $button.disabled = false), 1000);
 };
 /**
@@ -55,7 +57,7 @@ const enabledButtons = () => {
  * @description
  * Elimina las clases de resultado del juego anterior
  */
-const resetLayout = async () => {
+function resetLayout() {
   $body.classList.remove('win', 'lose', 'draw', '___Piedra', '___Papel', '___Tijera');
   $main.classList.remove('___Piedra', '___Papel', '___Tijera');
 }
@@ -64,7 +66,7 @@ const resetLayout = async () => {
  * @param {string} optionUser 
  * @returns {Promise}
  */
-const play = async optionUser => {
+function play(optionUser) {
   const
     options           = ['Piedra', 'Papel', 'Tijera'],
     optionComputer    = options[Math.floor(Math.random() * 3)],
@@ -82,7 +84,7 @@ const play = async optionUser => {
  * Papel gana a Piedra |
  * Tijera gana a Papel
  */
-const getResult = async (user, pc) => {
+function getResult(user, pc) {
   const options = {
     'Piedra'    : () => pc === 'Tijera',
     'Papel'     : () => pc === 'Piedra',
